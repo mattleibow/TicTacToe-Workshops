@@ -11,10 +11,12 @@
                Margin="0,0,0,10" />
 
         <Button Text="PLAY" FontSize="30"
+                Clicked="OnPlayClicked"
                 WidthRequest="160" HeightRequest="80"
                 HorizontalOptions="Center" />
 
         <Button Text="SCORES" FontSize="20"
+                x:Name="scoresButton"
                 WidthRequest="120" HeightRequest="60"
                 HorizontalOptions="Center" />
 

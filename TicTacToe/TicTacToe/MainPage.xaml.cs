@@ -12,6 +12,13 @@ namespace TicTacToe
 		public MainPage()
 		{
 			InitializeComponent();
+
+			scoresButton.IsEnabled = false;
+		}
+
+		private void OnPlayClicked(object sender, EventArgs e)
+		{
+			DisplayAlert("Play", "We are still working on this!", "OK");
 		}
 	}
 }
