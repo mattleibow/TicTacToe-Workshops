@@ -3,13 +3,13 @@
              xmlns:local="clr-namespace:TicTacToe"
              x:Class="TicTacToe.MainPage">
 
-    <StackLayout Padding="20" Spacing="10"
+    <StackLayout Padding="20" Spacing="30"
                  VerticalOptions="Center" HorizontalOptions="Center">
 
-        <Label Text="Tic Tac Toe" FontSize="60"
+        <Label Text="Tic Tac Toe" FontSize="48"
                Style="{StaticResource FancyFontLabelStyle}"
                HorizontalOptions="Center"
-               Margin="0,0,0,10" />
+               Margin="0,0,0,20" />
 
         <Button Text="PLAY" FontSize="30"
                 Clicked="OnPlayClicked"
