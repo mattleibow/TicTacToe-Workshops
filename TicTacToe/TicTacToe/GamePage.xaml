@@ -1,8 +1,24 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="TicTacToe.GamePage">
+             xmlns:local="clr-namespace:TicTacToe"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             mc:Ignorable="d"
+             x:Class="TicTacToe.GamePage"
+             SizeChanged="OnPageSizeChanged">
 
-    <Button Text="Back" Clicked="OnBackClicked"
-            HorizontalOptions="Center" VerticalOptions="Center" />
+    <Grid Padding="20">
+
+        <local:BoardView x:Name="boardView"
+                         d:WidthRequest="200" d:HeightRequest="200"
+                         WidthRequest="20" HeightRequest="20"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center" />
+
+        <Button Text="GIVE UP" Clicked="OnBackClicked"
+                WidthRequest="100" HeightRequest="40"
+                HorizontalOptions="Start" VerticalOptions="Start" />
+
+    </Grid>
 
 </ContentPage>

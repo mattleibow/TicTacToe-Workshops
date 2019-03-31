@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace TicTacToe
@@ -20,6 +16,27 @@ namespace TicTacToe
 
 			// we did intercept the default action
 			return true;
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+
+			var minSize = Math.Min(Width, Height) * 0.75;
+			boardView.Animate("resize", resize, length: 500, easing: Easing.SpringOut);
+			void resize(double f)
+			{
+				var deltaSize = minSize * f;
+				boardView.WidthRequest = deltaSize;
+				boardView.HeightRequest = deltaSize;
+			}
+		}
+
+		private void OnPageSizeChanged(object sender, EventArgs e)
+		{
+			var minSize = Math.Min(Width, Height) * 0.75;
+			boardView.WidthRequest = minSize;
+			boardView.HeightRequest = minSize;
 		}
 
 		private void OnBackClicked(object sender, EventArgs e)

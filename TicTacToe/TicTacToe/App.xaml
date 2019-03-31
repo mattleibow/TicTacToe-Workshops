@@ -4,6 +4,9 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            <Color x:Key="AlmostBlack">#212121</Color>
+            <Color x:Key="AlmostWhite">#FAFAFA</Color>
+
             <OnPlatform x:Key="FancyFontFamily" x:TypeArguments="x:String">
                 <On Platform="Android" Value="EraserRegular.ttf#Eraser" />
                 <On Platform="iOS" Value="Eraser" />
@@ -11,18 +14,18 @@
             </OnPlatform>
 
             <Style TargetType="Button">
-                <Setter Property="TextColor" Value="#FAFAFA" />
+                <Setter Property="TextColor" Value="{StaticResource AlmostWhite}" />
                 <Setter Property="BackgroundColor" Value="#03A9F4" />
                 <Setter Property="CornerRadius" Value="6" />
                 <Setter Property="FontFamily" Value="{StaticResource FancyFontFamily}" />
             </Style>
 
             <Style TargetType="Page" ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor" Value="#FAFAFA" />
+                <Setter Property="BackgroundColor" Value="{StaticResource AlmostWhite}" />
             </Style>
 
             <Style TargetType="Label">
-                <Setter Property="TextColor" Value="#212121" />
+                <Setter Property="TextColor" Value="{StaticResource AlmostBlack}" />
                 <Setter Property="FontSize" Value="12" />
             </Style>
 
