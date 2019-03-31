@@ -6,6 +6,7 @@
 
             <Color x:Key="AlmostBlack">#212121</Color>
             <Color x:Key="AlmostWhite">#FAFAFA</Color>
+            <Color x:Key="DefaultBlue">#03A9F4</Color>
 
             <OnPlatform x:Key="FancyFontFamily" x:TypeArguments="x:String">
                 <On Platform="Android" Value="EraserRegular.ttf#Eraser" />
@@ -15,7 +16,7 @@
 
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="{StaticResource AlmostWhite}" />
-                <Setter Property="BackgroundColor" Value="#03A9F4" />
+                <Setter Property="BackgroundColor" Value="{StaticResource DefaultBlue}" />
                 <Setter Property="CornerRadius" Value="6" />
                 <Setter Property="FontFamily" Value="{StaticResource FancyFontFamily}" />
             </Style>
