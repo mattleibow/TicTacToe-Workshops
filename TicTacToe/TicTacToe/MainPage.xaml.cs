@@ -18,7 +18,7 @@ namespace TicTacToe
 
 		private void OnPlayClicked(object sender, EventArgs e)
 		{
-			DisplayAlert("Play", "We are still working on this!", "OK");
+			App.Current.MainPage = new GamePage();
 		}
 	}
 }
