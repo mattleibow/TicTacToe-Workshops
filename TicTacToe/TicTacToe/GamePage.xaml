@@ -10,14 +10,29 @@
     <Grid Padding="20">
 
         <local:BoardView x:Name="boardView"
-                         d:WidthRequest="200" d:HeightRequest="200"
-                         WidthRequest="20" HeightRequest="20"
+                         WidthRequest="0" d:WidthRequest="200"
+                         HeightRequest="0" d:HeightRequest="200"
                          HorizontalOptions="Center"
                          VerticalOptions="Center" />
 
-        <Button Text="GIVE UP" Clicked="OnBackClicked"
+        <Button x:Name="backButton"
+                Text="GIVE UP" Clicked="OnBackClicked"
+                TranslationY="-100" d:TranslationY="0"
                 WidthRequest="100" HeightRequest="40"
-                HorizontalOptions="Start" VerticalOptions="Start" />
+                HorizontalOptions="Start"
+                VerticalOptions="Start" />
+
+        <StackLayout x:Name="currentPlayerLayout"
+                     HorizontalOptions="Center"
+                     VerticalOptions="End"
+                     TranslationY="100" d:TranslationY="0">
+            <Label Text="Current Player"
+                   HorizontalOptions="Center" />
+            <Label d:Text="X"
+                   Style="{StaticResource FancyFontLabelStyle}"
+                   FontSize="20"
+                   HorizontalOptions="Center" />
+        </StackLayout>
 
     </Grid>
 

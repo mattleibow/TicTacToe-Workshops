@@ -22,6 +22,9 @@ namespace TicTacToe
 		{
 			base.OnAppearing();
 
+			backButton.TranslateTo(0, 0, 500, Easing.BounceOut);
+			currentPlayerLayout.TranslateTo(0, 0, 500, Easing.BounceOut);
+
 			var minSize = Math.Min(Width, Height) * 0.75;
 			boardView.Animate("resize", resize, length: 500, easing: Easing.SpringOut);
 			void resize(double f)
