@@ -7,6 +7,10 @@
              x:Class="TicTacToe.GamePage"
              SizeChanged="OnPageSizeChanged">
 
+    <ContentPage.BindingContext>
+        <local:GameViewModel />
+    </ContentPage.BindingContext>
+
     <Grid Padding="20">
 
         <local:BoardView x:Name="boardView"
@@ -28,7 +32,7 @@
                      TranslationY="100" d:TranslationY="0">
             <Label Text="Current Player"
                    HorizontalOptions="Center" />
-            <Label d:Text="X"
+            <Label Text="{Binding CurrentPlayer}"
                    Style="{StaticResource FancyFontLabelStyle}"
                    FontSize="20"
                    HorizontalOptions="Center" />

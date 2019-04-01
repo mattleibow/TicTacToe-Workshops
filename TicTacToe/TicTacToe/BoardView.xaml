@@ -1,4 +1,4 @@
-﻿<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -51,19 +51,28 @@
         </Grid.ColumnDefinitions>
 
         <!-- row 1 -->
-        <Button Grid.Row="0" Grid.Column="0" d:Text="X" />
-        <Button Grid.Row="0" Grid.Column="2" />
-        <Button Grid.Row="0" Grid.Column="4" />
+        <Button Grid.Row="0" Grid.Column="0" d:Text="X"
+                Command="{Binding MakeMoveCommand}" />
+        <Button Grid.Row="0" Grid.Column="2"
+                Command="{Binding MakeMoveCommand}" />
+        <Button Grid.Row="0" Grid.Column="4"
+                Command="{Binding MakeMoveCommand}" />
 
         <!-- row 2 -->
-        <Button Grid.Row="2" Grid.Column="0" />
-        <Button Grid.Row="2" Grid.Column="2" d:Text="O" />
-        <Button Grid.Row="2" Grid.Column="4" />
+        <Button Grid.Row="2" Grid.Column="0"
+                Command="{Binding MakeMoveCommand}" />
+        <Button Grid.Row="2" Grid.Column="2" d:Text="O"
+                Command="{Binding MakeMoveCommand}" />
+        <Button Grid.Row="2" Grid.Column="4"
+                Command="{Binding MakeMoveCommand}" />
 
         <!-- row 3 -->
-        <Button Grid.Row="4" Grid.Column="0" />
-        <Button Grid.Row="4" Grid.Column="2" />
-        <Button Grid.Row="4" Grid.Column="4" />
+        <Button Grid.Row="4" Grid.Column="0"
+                Command="{Binding MakeMoveCommand}" />
+        <Button Grid.Row="4" Grid.Column="2"
+                Command="{Binding MakeMoveCommand}" />
+        <Button Grid.Row="4" Grid.Column="4"
+                Command="{Binding MakeMoveCommand}" />
 
         <!-- lines -->
         <BoxView Grid.Row="1" Grid.ColumnSpan="5" />
