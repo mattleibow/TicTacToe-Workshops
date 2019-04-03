@@ -3,10 +3,12 @@
              xmlns:local="clr-namespace:TicTacToe"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              mc:Ignorable="d"
              x:Class="TicTacToe.GamePage"
              NavigationPage.HasNavigationBar="False"
              SizeChanged="OnPageSizeChanged"
+             ios:Page.UseSafeArea="true">
 
     <ContentPage.BindingContext>
         <local:GameViewModel />
