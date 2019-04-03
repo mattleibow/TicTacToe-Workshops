@@ -24,7 +24,7 @@ namespace TicTacToe
 
 		public GameViewModel()
 		{
-			MakeMoveCommand = new Command(OnMakeMove);
+			MakeMoveCommand = new Command<string>(OnMakeMove);
 			Board = new Player[9];
 			CurrentPlayer = Player.X;
 		}
@@ -63,7 +63,7 @@ namespace TicTacToe
 			}
 		}
 
-		private void OnMakeMove()
+		private void OnMakeMove(string index)
 		{
 			CurrentPlayer = CurrentPlayer == Player.X
 				? Player.O
