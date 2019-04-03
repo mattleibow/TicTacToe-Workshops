@@ -52,7 +52,7 @@ namespace TicTacToe
 			var message = "Are you sure you want to leave the game? You might win!";
 			if (await DisplayAlert("Back", message, "Yes", "No"))
 			{
-				App.Current.MainPage = new MainPage();
+				await Navigation.PopAsync();
 			}
 		}
 	}

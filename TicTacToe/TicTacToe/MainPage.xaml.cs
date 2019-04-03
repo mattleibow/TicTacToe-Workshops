@@ -14,7 +14,7 @@ namespace TicTacToe
 
 		private void OnPlayClicked(object sender, EventArgs e)
 		{
-			App.Current.MainPage = new GamePage();
+			Navigation.PushAsync(new GamePage());
 		}
 	}
 }

@@ -1,11 +1,12 @@
-﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:TicTacToe"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="TicTacToe.GamePage"
-             SizeChanged="OnPageSizeChanged">
+             NavigationPage.HasNavigationBar="False"
+             SizeChanged="OnPageSizeChanged"
 
     <ContentPage.BindingContext>
         <local:GameViewModel />
