@@ -1,9 +1,14 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TicTacToe"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="TicTacToe.BoardView">
+
+    <d:ContentView.BindingContext>
+        <local:GameViewModel />
+    </d:ContentView.BindingContext>
 
     <ContentView.Resources>
         <ResourceDictionary>
