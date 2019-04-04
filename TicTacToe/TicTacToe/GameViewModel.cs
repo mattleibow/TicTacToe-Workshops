@@ -63,8 +63,23 @@ namespace TicTacToe
 			}
 		}
 
-		private void OnMakeMove(string index)
+		private void OnMakeMove(string indexString)
 		{
+			if (!int.TryParse(indexString, out var index))
+				return;
+
+			if (State != GameState.InProgress)
+				return;
+
+			if (index < 0 || index >= Board.Length)
+				return;
+
+			if (Board[index] != Player.Nobody)
+				return;
+
+			Board[index] = CurrentPlayer;
+			OnPropertyChanged(nameof(Board));
+
 			CurrentPlayer = CurrentPlayer == Player.X
 				? Player.O
 				: Player.X;
