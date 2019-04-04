@@ -6,6 +6,7 @@ namespace TicTacToe
 {
 	public enum GameState
 	{
+		NotStarted,
 		InProgress,
 		GameOver
 	}
@@ -66,7 +67,7 @@ namespace TicTacToe
 
 		private void OnMakeMove(string indexString)
 		{
-			if (State != GameState.InProgress)
+			if (State == GameState.GameOver)
 				return;
 
 			if (!int.TryParse(indexString, out var index))
@@ -91,6 +92,7 @@ namespace TicTacToe
 			else
 			{
 				// we are still going
+				State = GameState.InProgress;
 				CurrentPlayer = CurrentPlayer == Player.X
 					? Player.O
 					: Player.X;

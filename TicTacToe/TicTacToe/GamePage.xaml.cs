@@ -10,6 +10,8 @@ namespace TicTacToe
 			InitializeComponent();
 		}
 
+		private GameViewModel ViewModel => BindingContext as GameViewModel;
+
 		protected override bool OnBackButtonPressed()
 		{
 			DoGoBack();
@@ -49,8 +51,10 @@ namespace TicTacToe
 
 		private async void DoGoBack()
 		{
+			var inProgress = ViewModel.State == GameState.InProgress;
+
 			var message = "Are you sure you want to leave the game? You might win!";
-			if (await DisplayAlert("Back", message, "Yes", "No"))
+			if (!inProgress || await DisplayAlert("Back", message, "Yes", "No"))
 			{
 				await Navigation.PopAsync();
 			}
