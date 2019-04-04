@@ -65,12 +65,11 @@ namespace TicTacToe
 
 		private void OnMakeMove(string indexString)
 		{
-			if (!int.TryParse(indexString, out var index))
-				return;
-
 			if (State != GameState.InProgress)
 				return;
 
+			if (!int.TryParse(indexString, out var index))
+				return;
 			if (index < 0 || index >= Board.Length)
 				return;
 
