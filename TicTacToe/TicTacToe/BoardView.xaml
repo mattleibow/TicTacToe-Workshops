@@ -56,36 +56,45 @@
         </Grid.ColumnDefinitions>
 
         <!-- row 1 -->
-        <Button Grid.Row="0" Grid.Column="0" d:Text="X"
+        <Button Grid.Row="0" Grid.Column="0" d:Text="X" d:TextColor="{StaticResource DefaultRed}"
                 Text="{Binding Board[0], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[0], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="0" />
         <Button Grid.Row="0" Grid.Column="2"
                 Text="{Binding Board[1], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[1], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="1" />
         <Button Grid.Row="0" Grid.Column="4"
                 Text="{Binding Board[2], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[2], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="2" />
 
         <!-- row 2 -->
         <Button Grid.Row="2" Grid.Column="0"
                 Text="{Binding Board[3], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[3], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="3" />
         <Button Grid.Row="2" Grid.Column="2" d:Text="O"
                 Text="{Binding Board[4], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[4], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="4" />
         <Button Grid.Row="2" Grid.Column="4"
                 Text="{Binding Board[5], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[5], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="5" />
 
         <!-- row 3 -->
         <Button Grid.Row="4" Grid.Column="0"
                 Text="{Binding Board[6], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[6], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="6" />
         <Button Grid.Row="4" Grid.Column="2"
                 Text="{Binding Board[7], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[7], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="7" />
         <Button Grid.Row="4" Grid.Column="4"
                 Text="{Binding Board[8], Converter={StaticResource PlayerConverter}}"
+                TextColor="{Binding Board[8], Converter={StaticResource ColorConverter}}"
                 Command="{Binding MakeMoveCommand}" CommandParameter="8" />
 
         <!-- lines -->
