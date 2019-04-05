@@ -92,6 +92,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.8" />
     <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.14.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.14.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TicTacToe\TicTacToe.csproj">

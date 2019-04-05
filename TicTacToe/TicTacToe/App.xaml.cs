@@ -1,3 +1,6 @@
+﻿using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -16,7 +19,12 @@ namespace TicTacToe
 
 		protected override void OnStart()
 		{
-			// Handle when your app starts
+			AppCenter.LogLevel = LogLevel.Verbose;
+			AppCenter.Start(
+				"android=5400d30b-a163-4ae8-ac99-8a886ba60e82;" +
+				"ios=972a7d89-3b25-4d5f-88e5-302e0ba0d634;" +
+				"uwp=a498e3f2-448c-4b7d-95e6-9352800dd652;",
+				typeof(Analytics), typeof(Crashes));
 		}
 
 		protected override void OnSleep()
