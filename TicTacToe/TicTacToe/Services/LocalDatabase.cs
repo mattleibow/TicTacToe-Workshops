@@ -23,6 +23,7 @@ namespace TicTacToe
 				connection = new SQLiteAsyncConnection(databasePath);
 
 				await connection.CreateTableAsync<CompletedGame>();
+				await connection.CreateTableAsync<GameStatistic>();
 			});
 		}
 
@@ -34,6 +35,11 @@ namespace TicTacToe
 
 				await connection.InsertAsync(game);
 
+				var stats = await connection.FindAsync<GameStatistic>(game.Board);
+				stats = stats ?? new GameStatistic { Board = game.Board };
+				stats.PlayCount++;
+				await connection.InsertOrReplaceAsync(stats);
+
 				return true;
 			}
 			catch (Exception ex)
@@ -44,23 +50,73 @@ namespace TicTacToe
 			}
 		}
 
+		public async Task<bool> RemoveCompletedGameAsync(string id)
+		{
+			try
+			{
+				await initializedTask;
+
+				await connection.DeleteAsync<CompletedGame>(id);
+
+				return true;
+			}
+			catch (Exception ex)
+			{
+				Crashes.TrackError(ex);
+
+				return false;
+			}
+		}
+
+		public async Task<CompletedGame[]> GetCompletedGamesAsync()
+		{
+			try
+			{
+				await initializedTask;
+
+				return await connection.Table<CompletedGame>().ToArrayAsync();
+			}
+			catch (Exception ex)
+			{
+				Crashes.TrackError(ex);
+
+				return new CompletedGame[0];
+			}
+		}
+
 		public async Task<int> GetGamePlayCountAsync(string board)
 		{
 			try
 			{
 				await initializedTask;
 
-				var result = await connection.Table<CompletedGame>()
-					.Where(g => g.Board == board)
-					.CountAsync();
+				var statsResult = await connection.FindAsync<GameStatistic>(board);
 
-				return result;
+				return statsResult?.PlayCount ?? 0;
 			}
 			catch (Exception ex)
 			{
 				Crashes.TrackError(ex);
 
 				return -1;
+			}
+		}
+
+		public async Task<bool> UpdateGameStatsAsync(GameStatistic stats)
+		{
+			try
+			{
+				await initializedTask;
+
+				await connection.UpdateAsync(stats);
+
+				return true;
+			}
+			catch (Exception ex)
+			{
+				Crashes.TrackError(ex);
+
+				return false;
 			}
 		}
 	}

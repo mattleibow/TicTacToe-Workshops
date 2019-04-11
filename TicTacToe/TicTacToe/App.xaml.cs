@@ -17,7 +17,7 @@ namespace TicTacToe
 			MainPage = new NavigationPage(new MainPage());
 		}
 
-		public static LocalDatabase Database { get; } = new LocalDatabase();
+		public static HybridDatabase Database { get; } = new HybridDatabase();
 
 		protected override void OnStart()
 		{
