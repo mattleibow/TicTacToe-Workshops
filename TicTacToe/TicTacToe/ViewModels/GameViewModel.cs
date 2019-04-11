@@ -6,12 +6,17 @@ namespace TicTacToe
 {
 	public class GameViewModel : BindableObject
 	{
+		private readonly CloudDatabase database;
+
 		private Player currentPlayer;
 		private Player winner;
 		private GameState state;
+		private int boardPlayCount;
 
 		public GameViewModel()
 		{
+			database = new CloudDatabase();
+
 			MakeMoveCommand = new Command<string>(OnMakeMove);
 			Board = new Player[9];
 			CurrentPlayer = Player.X;
@@ -51,7 +56,17 @@ namespace TicTacToe
 			}
 		}
 
-		private void OnMakeMove(string indexString)
+		public int BoardPlayCount
+		{
+			get { return boardPlayCount; }
+			set
+			{
+				boardPlayCount = value;
+				OnPropertyChanged();
+			}
+		}
+
+		private async void OnMakeMove(string indexString)
 		{
 			if (State == GameState.GameOver)
 				return;
@@ -79,6 +94,15 @@ namespace TicTacToe
 				foreach (var pos in possible.Value.Positions)
 					Board[pos] |= Player.IsWinner;
 				OnPropertyChanged(nameof(Board));
+
+				// create the game object that we will use
+				var game = CompletedGame.Create(Board, Winner);
+
+				// upload this game to the server
+				await database.AddCompletedGameAsync(game);
+
+				// download the stats for this board
+				BoardPlayCount = await database.GetGamePlayCountAsync(game.Board);
 			}
 			else
 			{
