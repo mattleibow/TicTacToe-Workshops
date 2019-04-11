@@ -6,8 +6,6 @@ namespace TicTacToe
 {
 	public class GameViewModel : BindableObject
 	{
-		private readonly CloudDatabase database;
-
 		private Player currentPlayer;
 		private Player winner;
 		private GameState state;
@@ -15,8 +13,6 @@ namespace TicTacToe
 
 		public GameViewModel()
 		{
-			database = new CloudDatabase();
-
 			MakeMoveCommand = new Command<string>(OnMakeMove);
 			Board = new Player[9];
 			CurrentPlayer = Player.X;
@@ -99,10 +95,10 @@ namespace TicTacToe
 				var game = CompletedGame.Create(Board, Winner);
 
 				// upload this game to the server
-				await database.AddCompletedGameAsync(game);
+				await App.Database.AddCompletedGameAsync(game);
 
 				// download the stats for this board
-				BoardPlayCount = await database.GetGamePlayCountAsync(game.Board);
+				BoardPlayCount = await App.Database.GetGamePlayCountAsync(game.Board);
 			}
 			else
 			{

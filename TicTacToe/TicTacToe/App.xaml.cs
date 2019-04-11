@@ -17,6 +17,8 @@ namespace TicTacToe
 			MainPage = new NavigationPage(new MainPage());
 		}
 
+		public static LocalDatabase Database { get; } = new LocalDatabase();
+
 		protected override void OnStart()
 		{
 			AppCenter.LogLevel = LogLevel.Verbose;
