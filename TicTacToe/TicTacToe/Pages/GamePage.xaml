@@ -11,7 +11,7 @@
              ios:Page.UseSafeArea="true">
 
     <ContentPage.BindingContext>
-        <local:GameViewModel />
+        <local:GameViewModel PropertyChanged="OnViewModelPropertyChanged" />
     </ContentPage.BindingContext>
 
     <Grid Padding="20">
@@ -40,6 +40,48 @@
                    FontSize="20"
                    HorizontalOptions="Center" />
         </StackLayout>
+
+        <Grid x:Name="endgamePopup"
+              IsVisible="False" d:IsVisible="True">
+
+            <Grid x:Name="endgamePopupBackground"
+                  BackgroundColor="{StaticResource AlmostWhite}"
+                  Opacity="0" d:Opacity="0.95" />
+
+            <StackLayout x:Name="endgamePopupContents"
+                         Padding="0" Spacing="20"
+                         Scale="0" d:Scale="1"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center">
+
+                <Label Text="Game Over!" FontSize="20"
+                       HorizontalTextAlignment="Center" />
+                <Label d:Text="Nobody" FontSize="80"
+                       TextColor="{StaticResource DefaultRed}"
+                       Text="{Binding Winner}"
+                       Style="{StaticResource FancyFontLabelStyle}"
+                       HorizontalTextAlignment="Center" />
+                <Label Text="Won!" FontSize="60"
+                       Style="{StaticResource FancyFontLabelStyle}"
+                       Margin="0,-30,0,0"
+                       HorizontalTextAlignment="Center" />
+
+                <Label x:Name="endgamePopupStats"
+                       Opacity="0" d:Opacity="1"
+                       Text="{Binding BoardPlayCount, StringFormat='This board has been played {0} times around the world!'}"
+                       d:Text="This board has been played 0 times around the world!"
+                       FontSize="20" Margin="20,0"
+                       HorizontalTextAlignment="Center" />
+
+                <Button Text="PLAY AGAIN" Clicked="OnPlayAgainClicked"
+                        WidthRequest="120" HeightRequest="40"
+                        HorizontalOptions="Center" />
+                <Button Text="BACK" Clicked="OnBackClicked"
+                        WidthRequest="120" HeightRequest="40"
+                        HorizontalOptions="Center" />
+
+            </StackLayout>
+        </Grid>
 
     </Grid>
 

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AppCenter.Analytics;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace TicTacToe
@@ -66,6 +67,44 @@ namespace TicTacToe
 
 				await Navigation.PopAsync();
 			}
+		}
+
+		private void OnViewModelPropertyChanged(object sender, PropertyChangedEventArgs e)
+		{
+			if (e.PropertyName == nameof(GameViewModel.State))
+			{
+				// when the game is over, show the endgame popup
+				if (ViewModel.State == GameState.GameOver)
+				{
+					endgamePopup.IsVisible = true;
+					endgamePopupBackground.FadeTo(0.95);
+					endgamePopupContents.ScaleTo(1);
+				}
+			}
+			else if (e.PropertyName == nameof(GameViewModel.BoardPlayCount))
+			{
+				// when the stats are loaded, show the stats
+				endgamePopupStats.FadeTo(1);
+			}
+		}
+
+		private async void OnPlayAgainClicked(object sender, EventArgs e)
+		{
+			Analytics.TrackEvent("Play again");
+
+			// first, fade out the entire popup
+			await endgamePopup.FadeTo(0);
+
+			// then, reset all the animations to their initial values
+			endgamePopup.IsVisible = false;
+			endgamePopup.Opacity = 1;
+			endgamePopupBackground.Opacity = 0;
+			endgamePopupContents.Scale = 0;
+			endgamePopupStats.Opacity = 0;
+
+			// finally, create a clean view model
+			BindingContext = new GameViewModel();
+			ViewModel.PropertyChanged += OnViewModelPropertyChanged;
 		}
 	}
 }
