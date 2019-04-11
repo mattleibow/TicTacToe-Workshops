@@ -1,10 +1,13 @@
 ﻿using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using TicTacToe;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
+[assembly: Dependency(typeof(HybridDatabase))]
 
 namespace TicTacToe
 {
@@ -16,8 +19,6 @@ namespace TicTacToe
 
 			MainPage = new NavigationPage(new MainPage());
 		}
-
-		public static HybridDatabase Database { get; } = new HybridDatabase();
 
 		protected override void OnStart()
 		{

@@ -7,7 +7,7 @@ using Xamarin.Essentials;
 
 namespace TicTacToe
 {
-	public class LocalDatabase
+	public class LocalDatabase : IDatabase
 	{
 		private const string DatabaseName = "games.db3";
 

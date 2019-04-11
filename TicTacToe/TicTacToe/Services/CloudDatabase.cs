@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-	public class CloudDatabase
+	public class CloudDatabase : IDatabase
 	{
 		private const string EndpointUri = "https://tictactoe-workshops.documents.azure.com:443/";
 		private const string AuthKey = "miczHwBiecMWcNmM5XijfRiJcKdH3aoAQyLCI15d8Bi0042By7jrtPiPaQCsa0pTRP3i35HCj71eqLdiBRpfWg==";

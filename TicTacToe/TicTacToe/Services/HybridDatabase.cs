@@ -5,7 +5,7 @@ using Xamarin.Essentials;
 
 namespace TicTacToe
 {
-	public class HybridDatabase
+	public class HybridDatabase : IDatabase
 	{
 		private readonly LocalDatabase localDatabase;
 		private readonly CloudDatabase cloudDatabase;
