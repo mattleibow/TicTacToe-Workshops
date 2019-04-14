@@ -51,7 +51,7 @@
 
         <!-- row 2 -->
         <Button Grid.Row="2" Grid.Column="0" />
-        <Button Grid.Row="2" Grid.Column="2" />
+        <Button Grid.Row="2" Grid.Column="2" d:Text="O" />
         <Button Grid.Row="2" Grid.Column="4" />
 
         <!-- row 3 -->
