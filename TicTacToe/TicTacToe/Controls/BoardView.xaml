@@ -1,0 +1,70 @@
+﻿<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TicTacToe"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             mc:Ignorable="d"
+             x:Class="TicTacToe.BoardView">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+            <Style TargetType="BoxView">
+                <Setter Property="Color" Value="{StaticResource AlmostBlack}" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AlmostWhite}" />
+                <Setter Property="TextColor" Value="{StaticResource AlmostBlack}" />
+                <Setter Property="FontSize" Value="40" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Grid d:WidthRequest="200" d:HeightRequest="200"
+          d:HorizontalOptions="Center"
+          d:VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- row 1 -->
+        <Button Grid.Row="0" Grid.Column="0" d:Text="X" />
+        <Button Grid.Row="0" Grid.Column="2" />
+        <Button Grid.Row="0" Grid.Column="4" />
+
+        <!-- row 2 -->
+        <Button Grid.Row="2" Grid.Column="0" />
+        <Button Grid.Row="2" Grid.Column="2" />
+        <Button Grid.Row="2" Grid.Column="4" />
+
+        <!-- row 3 -->
+        <Button Grid.Row="4" Grid.Column="0" />
+        <Button Grid.Row="4" Grid.Column="2" />
+        <Button Grid.Row="4" Grid.Column="4" />
+
+        <!-- lines -->
+        <BoxView Grid.Row="1" Grid.ColumnSpan="5" />
+        <BoxView Grid.Row="3" Grid.ColumnSpan="5" />
+        <BoxView Grid.Column="1" Grid.RowSpan="5" />
+        <BoxView Grid.Column="3" Grid.RowSpan="5" />
+
+    </Grid>
+
+</ContentView>
