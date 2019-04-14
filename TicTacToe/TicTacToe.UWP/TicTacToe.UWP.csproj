@@ -156,6 +156,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\Resources\EraserRegular.ttf">
+      <Link>Assets\Fonts\EraserRegular.ttf</Link>
+    </Content>
     <None Include="TicTacToe.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

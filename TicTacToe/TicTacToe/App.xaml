@@ -10,7 +10,14 @@
             <Color x:Key="AlmostWhite">#FAFAFA</Color>
             <Color x:Key="DefaultBlue">#03A9F4</Color>
 
+            <OnPlatform x:Key="FancyFontFamily" x:TypeArguments="x:String">
+                <On Platform="Android" Value="EraserRegular.ttf#Eraser" />
+                <On Platform="iOS" Value="Eraser" />
+                <On Platform="UWP" Value="Assets\Fonts\EraserRegular.ttf#Eraser" />
+            </OnPlatform>
+
             <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource FancyFontFamily}" />
                 <Setter Property="TextColor" Value="{StaticResource AlmostWhite}" />
                 <Setter Property="BackgroundColor" Value="{StaticResource DefaultBlue}" />
                 <Setter Property="CornerRadius" Value="6" />
@@ -26,7 +33,7 @@
             </Style>
 
             <Style x:Key="FancyFontLabelStyle" TargetType="Label">
-                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="FontFamily" Value="{StaticResource FancyFontFamily}" />
             </Style>
 
         </ResourceDictionary>
