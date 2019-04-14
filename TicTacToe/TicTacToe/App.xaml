@@ -3,4 +3,33 @@
              xmlns:local="clr-namespace:TicTacToe"
              x:Class="TicTacToe.App">
 
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <Color x:Key="AlmostBlack">#212121</Color>
+            <Color x:Key="AlmostWhite">#FAFAFA</Color>
+            <Color x:Key="DefaultBlue">#03A9F4</Color>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource AlmostWhite}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource DefaultBlue}" />
+                <Setter Property="CornerRadius" Value="6" />
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource AlmostBlack}" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+
+            <Style TargetType="Page" ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor" Value="{StaticResource AlmostWhite}" />
+            </Style>
+
+            <Style x:Key="FancyFontLabelStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+
 </Application>
