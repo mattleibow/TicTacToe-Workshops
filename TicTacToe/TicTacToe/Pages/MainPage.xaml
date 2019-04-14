@@ -3,4 +3,22 @@
              xmlns:local="clr-namespace:TicTacToe"
              x:Class="TicTacToe.MainPage">
 
+    <StackLayout Padding="20" Spacing="10"
+                 VerticalOptions="Center"
+                 HorizontalOptions="Center">
+
+        <Label Text="Tic Tac Toe" FontSize="60"
+               HorizontalOptions="Center"
+               Margin="0,0,0,10" />
+
+        <Button Text="PLAY" FontSize="30"
+                WidthRequest="160" HeightRequest="80"
+                HorizontalOptions="Center" />
+
+        <Button Text="SCORES" FontSize="20"
+                WidthRequest="120" HeightRequest="60"
+                HorizontalOptions="Center" />
+
+    </StackLayout>
+
 </ContentPage>
