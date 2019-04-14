@@ -1,0 +1,10 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TicTacToe"
+             x:Class="TicTacToe.GamePage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Button Text="Back" Clicked="OnBackClicked"
+            HorizontalOptions="Center" VerticalOptions="Center" />
+
+</ContentPage>

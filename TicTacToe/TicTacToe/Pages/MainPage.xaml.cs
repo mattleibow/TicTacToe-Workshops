@@ -12,9 +12,9 @@ namespace TicTacToe
 			scoresButton.IsEnabled = false;
 		}
 
-		private void OnPlayClicked(object sender, EventArgs e)
+		private async void OnPlayClicked(object sender, EventArgs e)
 		{
-			DisplayAlert("Play", "We are still working on this!", "OK");
+			await Navigation.PushAsync(new GamePage());
 		}
 	}
 }
