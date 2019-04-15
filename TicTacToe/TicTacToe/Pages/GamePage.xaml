@@ -30,7 +30,7 @@
                      TranslationY="100" d:TranslationY="0">
             <Label Text="Current Player"
                    HorizontalOptions="Center" />
-            <Label d:Text="X" Text="X"
+            <Label Text="X"
                    Style="{StaticResource FancyFontLabelStyle}"
                    FontSize="20"
                    HorizontalOptions="Center" />
