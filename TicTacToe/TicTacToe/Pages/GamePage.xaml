@@ -10,6 +10,10 @@
              SizeChanged="OnPageSizeChanged"
              ios:Page.UseSafeArea="true">
 
+    <ContentPage.BindingContext>
+        <local:GameViewModel />
+    </ContentPage.BindingContext>
+
     <Grid Padding="20">
         <Button x:Name="backButton"
                 Text="GIVE UP" Clicked="OnBackClicked"
@@ -30,7 +34,7 @@
                      TranslationY="100" d:TranslationY="0">
             <Label Text="Current Player"
                    HorizontalOptions="Center" />
-            <Label d:Text="X" Text="X"
+            <Label Text="{Binding CurrentPlayer}"
                    Style="{StaticResource FancyFontLabelStyle}"
                    FontSize="20"
                    HorizontalOptions="Center" />
