@@ -6,6 +6,8 @@
     <Application.Resources>
         <ResourceDictionary>
 
+            <local:PlayerConverter x:Key="PlayerConverter" />
+
             <Color x:Key="AlmostBlack">#212121</Color>
             <Color x:Key="AlmostWhite">#FAFAFA</Color>
             <Color x:Key="DefaultBlue">#03A9F4</Color>
