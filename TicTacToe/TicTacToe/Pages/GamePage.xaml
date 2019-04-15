@@ -1,9 +1,40 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:TicTacToe"
              x:Class="TicTacToe.GamePage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             SizeChanged="OnPageSizeChanged"
+             ios:Page.UseSafeArea="true">
 
-    <Button Text="Back" Clicked="OnBackClicked"
-            HorizontalOptions="Center" VerticalOptions="Center" />
+    <Grid Padding="20">
+        <Button x:Name="backButton"
+                Text="GIVE UP" Clicked="OnBackClicked"
+                TranslationY="-100" d:TranslationY="0"
+                WidthRequest="100" HeightRequest="40"
+                HorizontalOptions="Start"
+                VerticalOptions="Start" />
+
+        <local:BoardView x:Name="boardView"
+                         WidthRequest="0" d:WidthRequest="200"
+                         HeightRequest="0" d:HeightRequest="200"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center" />
+
+        <StackLayout x:Name="currentPlayerLayout"
+                     HorizontalOptions="Center"
+                     VerticalOptions="End"
+                     TranslationY="100" d:TranslationY="0">
+            <Label Text="Current Player"
+                   HorizontalOptions="Center" />
+            <Label d:Text="X" Text="X"
+                   Style="{StaticResource FancyFontLabelStyle}"
+                   FontSize="20"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </Grid>
 
 </ContentPage>
