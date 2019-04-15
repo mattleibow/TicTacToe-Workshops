@@ -45,7 +45,8 @@
         </Grid.ColumnDefinitions>
 
         <!-- row 1 -->
-        <Button Grid.Row="0" Grid.Column="0" d:Text="X"
+        <Button Grid.Row="0" Grid.Column="0"
+                d:Text="X"
                 Command="{Binding MakeMoveCommand}" />
         <Button Grid.Row="0" Grid.Column="2"
                 Command="{Binding MakeMoveCommand}" />
@@ -55,7 +56,8 @@
         <!-- row 2 -->
         <Button Grid.Row="2" Grid.Column="0"
                 Command="{Binding MakeMoveCommand}" />
-        <Button Grid.Row="2" Grid.Column="2" d:Text="O"
+        <Button Grid.Row="2" Grid.Column="2"
+                d:Text="O"
                 Command="{Binding MakeMoveCommand}" />
         <Button Grid.Row="2" Grid.Column="4"
                 Command="{Binding MakeMoveCommand}" />
