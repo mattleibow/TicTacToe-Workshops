@@ -59,7 +59,7 @@
                 Command="{Binding MakeMoveCommand}"
                 CommandParameter="1" />
         <Button Grid.Row="0" Grid.Column="4"
-                Text="{Binding Board[1], Converter={StaticResource PlayerConverter}}"
+                Text="{Binding Board[2], Converter={StaticResource PlayerConverter}}"
                 Command="{Binding MakeMoveCommand}"
                 CommandParameter="2" />
 
