@@ -71,9 +71,14 @@ namespace TicTacToe
 			if (possible != null)
 			{
 				// there was a winner or a tie
-				Winner = possible.Value;
+				Winner = possible.Value.Winner;
 				State = GameState.GameOver;
 				CurrentPlayer = Player.Nobody;
+
+				// add the result to the board
+				foreach (var pos in possible.Value.Positions)
+					Board[pos] |= Player.IsWinner;
+				OnPropertyChanged(nameof(Board));
 			}
 			else
 			{
@@ -85,13 +90,13 @@ namespace TicTacToe
 			}
 		}
 
-		private Player? DetectGameOver()
+		private (Player Winner, int[] Positions)? DetectGameOver()
 		{
 			// check vertical for winner
 			for (var i = 0; i < 3; i++)
 			{
 				var vertWin = CheckLine(i, i + 3, i + 6);
-				if (vertWin != Player.Nobody)
+				if (vertWin.Winner != Player.Nobody)
 					return vertWin;
 			}
 
@@ -99,32 +104,32 @@ namespace TicTacToe
 			for (var i = 0; i < 9; i += 3)
 			{
 				var horizWin = CheckLine(i, i + 1, i + 2);
-				if (horizWin != Player.Nobody)
+				if (horizWin.Winner != Player.Nobody)
 					return horizWin;
 			}
 
 			// check top-left to bottom-right for winner
 			var diag1Win = CheckLine(0, 4, 8);
-			if (diag1Win != Player.Nobody)
+			if (diag1Win.Winner != Player.Nobody)
 				return diag1Win;
 
 			// check top-right to bottom-left for winner
 			var diag2Win = CheckLine(2, 4, 6);
-			if (diag2Win != Player.Nobody)
+			if (diag2Win.Winner != Player.Nobody)
 				return diag2Win;
 
 			// check tie
-			if (Board.All(p => p != Player.Nobody))
-				return Player.Nobody;
+			if (Board.All(b => b != Player.Nobody))
+				return (Player.Nobody, new int[0]);
 
 			return null;
 
-			Player CheckLine(int a, int b, int c)
+			(Player Winner, int[] Positions) CheckLine(int a, int b, int c)
 			{
 				if (Board[a] == Board[b] && Board[a] == Board[c])
-					return Board[a];
+					return (Board[a], new[] { a, b, c });
 
-				return Player.Nobody;
+				return (Player.Nobody, new int[0]);
 			}
 		}
 	}

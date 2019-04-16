@@ -10,10 +10,10 @@ namespace TicTacToe
 		{
 			var player = (Player)value;
 
-			if (player == Player.X)
+			if (player.HasFlag(Player.X))
 				return "X";
 
-			if (player == Player.O)
+			if (player.HasFlag(Player.O))
 				return "O";
 
 			return string.Empty;
