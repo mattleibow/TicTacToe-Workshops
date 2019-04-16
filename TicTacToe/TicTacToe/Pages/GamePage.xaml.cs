@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AppCenter.Analytics;
+using System;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace TicTacToe
@@ -52,6 +54,12 @@ namespace TicTacToe
 			var message = "Are you sure you want to leave the game? You might win!";
 			if (!inProgress || await DisplayAlert("Back", message, "Yes", "No"))
 			{
+				var properties = new Dictionary<string, string>
+				{
+					{ "Game state", ViewModel.State.ToString() },
+				};
+				Analytics.TrackEvent("Go back to launcher page", properties);
+
 				await Navigation.PopAsync();
 			}
 		}

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AppCenter.Analytics;
+using System;
 using Xamarin.Forms;
 
 namespace TicTacToe
@@ -14,6 +15,8 @@ namespace TicTacToe
 
 		private async void OnPlayClicked(object sender, EventArgs e)
 		{
+			Analytics.TrackEvent("Navigate to game page");
+
 			await Navigation.PushAsync(new GamePage());
 		}
 	}
