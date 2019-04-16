@@ -78,6 +78,7 @@ namespace TicTacToe
 			else
 			{
 				// we are still going
+				State = GameState.InProgress;
 				CurrentPlayer = CurrentPlayer == Player.X
 					? Player.O
 					: Player.X;
