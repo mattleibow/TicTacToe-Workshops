@@ -38,5 +38,7 @@
 	<array>
 		<string>EraserRegular.ttf</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The device just needs you to confirm before we can use your location.</string>
 </dict>
 </plist>

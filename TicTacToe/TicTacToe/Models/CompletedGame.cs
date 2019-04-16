@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Linq;
+using Xamarin.Essentials;
 
 namespace TicTacToe
 {
@@ -15,6 +16,8 @@ namespace TicTacToe
 
 		public DateTimeOffset Timestamp { get; set; }
 
+		public string Location { get; set; }
+
 		public static CompletedGame Create(Player[] board, Player winner) =>
 			new CompletedGame
 			{
@@ -22,6 +25,7 @@ namespace TicTacToe
 				Board = string.Concat(board.Select(GetPlayerRepresentation)),
 				Winner = GetPlayerRepresentation(winner),
 				Timestamp = DateTimeOffset.UtcNow,
+				Location = Preferences.Get(App.LastLocationKey, null),
 			};
 
 		private static string GetPlayerRepresentation(Player player) =>
