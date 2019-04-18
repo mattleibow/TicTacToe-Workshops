@@ -33,8 +33,10 @@ namespace TicTacToe
 			{
 				await initializedTask;
 
+				// add the game to the table
 				await connection.InsertAsync(game);
 
+				// increase the stats for this board
 				var stats = await connection.FindAsync<GameStatistic>(game.Board);
 				stats = stats ?? new GameStatistic { Board = game.Board };
 				stats.PlayCount++;
@@ -90,9 +92,9 @@ namespace TicTacToe
 			{
 				await initializedTask;
 
-				var statsResult = await connection.FindAsync<GameStatistic>(board);
+				var result = await connection.FindAsync<GameStatistic>(board);
 
-				return statsResult?.PlayCount ?? 0;
+				return result?.PlayCount ?? 0;
 			}
 			catch (Exception ex)
 			{
