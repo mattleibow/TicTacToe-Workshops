@@ -66,15 +66,19 @@ namespace TicTacToe
 					return;
 
 				// get the city from the GPS coordinates
-				var placemarks = await Geocoding.GetPlacemarksAsync(location);
-				var place = placemarks?.FirstOrDefault();
+				var placemarks = await Geocoding.GetPlacemarksAsync(new Location(45.7984767, 15.7316957));
+				var place =
+					placemarks?.FirstOrDefault(p => !string.IsNullOrEmpty(p.Locality) && !string.IsNullOrEmpty(p.CountryName)) ??
+					placemarks?.FirstOrDefault(p => !string.IsNullOrEmpty(p.CountryName));
 
-				// make sure we have a valid location
-				if (string.IsNullOrWhiteSpace(place.Locality) || string.IsNullOrWhiteSpace(place.CountryName))
+				// make sure we have at least something
+				if (place == null)
 					return;
 
 				// combine the city and country
-				var city = $"{place.Locality}, {place.CountryName}";
+				var city = place.CountryName;
+				if (!string.IsNullOrEmpty(place.Locality))
+					city = $"{place.Locality}, {city}";
 
 				// make sure the city has changed
 				if (Preferences.Get(App.LastLocationKey, null) == city)
