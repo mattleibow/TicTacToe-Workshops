@@ -17,6 +17,8 @@ namespace TicTacToe
 			MainPage = new NavigationPage(new MainPage());
 		}
 
+		public static CloudDatabase Database { get; } = new CloudDatabase();
+
 		protected override void OnStart()
 		{
 			// Handle when your app starts

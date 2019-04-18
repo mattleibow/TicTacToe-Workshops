@@ -51,7 +51,7 @@ namespace TicTacToe
 			}
 		}
 
-		private void OnMakeMove(string indexString)
+		private async void OnMakeMove(string indexString)
 		{
 			if (State == GameState.GameOver)
 				return;
@@ -79,6 +79,10 @@ namespace TicTacToe
 				foreach (var pos in possible.Value.Positions)
 					Board[pos] |= Player.IsWinner;
 				OnPropertyChanged(nameof(Board));
+
+				var game = CompletedGame.Create(Board, Winner);
+
+				await App.Database.AddCompletedGameAsync(game);
 			}
 			else
 			{
