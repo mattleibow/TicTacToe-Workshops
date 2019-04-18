@@ -1,10 +1,12 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Linq;
 
 namespace TicTacToe
 {
 	public class CompletedGame
 	{
+		[PrimaryKey]
 		public string Id { get; set; }
 
 		public string Board { get; set; }
