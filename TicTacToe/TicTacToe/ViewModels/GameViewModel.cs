@@ -9,6 +9,7 @@ namespace TicTacToe
 		private Player currentPlayer;
 		private Player winner;
 		private GameState state;
+		private int boardPlayCount;
 
 		public GameViewModel()
 		{
@@ -51,6 +52,16 @@ namespace TicTacToe
 			}
 		}
 
+		public int BoardPlayCount
+		{
+			get { return boardPlayCount; }
+			set
+			{
+				boardPlayCount = value;
+				OnPropertyChanged();
+			}
+		}
+
 		private async void OnMakeMove(string indexString)
 		{
 			if (State == GameState.GameOver)
@@ -80,9 +91,14 @@ namespace TicTacToe
 					Board[pos] |= Player.IsWinner;
 				OnPropertyChanged(nameof(Board));
 
+				// create the game object that we will use
 				var game = CompletedGame.Create(Board, Winner);
 
+				// upload this game to the server
 				await App.Database.AddCompletedGameAsync(game);
+
+				// download the stats for this board
+				BoardPlayCount = await App.Database.GetGamePlayCountAsync(game.Board);
 			}
 			else
 			{

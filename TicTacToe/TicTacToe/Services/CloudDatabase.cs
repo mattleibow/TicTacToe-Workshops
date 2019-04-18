@@ -1,6 +1,8 @@
 ﻿using Microsoft.AppCenter.Crashes;
 using Microsoft.Azure.Documents.Client;
+using Microsoft.Azure.Documents.Linq;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace TicTacToe
@@ -42,6 +44,26 @@ namespace TicTacToe
 				Crashes.TrackError(ex);
 
 				return false;
+			}
+		}
+
+		public async Task<int> GetGamePlayCountAsync(string board)
+		{
+			try
+			{
+				await initializedTask;
+
+				var result = await client.CreateDocumentQuery<CompletedGame>(collection)
+					.Where(g => g.Board == board)
+					.CountAsync();
+
+				return result;
+			}
+			catch (Exception ex)
+			{
+				Crashes.TrackError(ex);
+
+				return -1;
 			}
 		}
 	}
