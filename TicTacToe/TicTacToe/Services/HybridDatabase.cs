@@ -45,7 +45,7 @@ namespace TicTacToe
 			return count;
 		}
 
-		public async Task UploadCachedGamesAsync()
+		private async Task UploadCachedGamesAsync()
 		{
 			// we are done if there is an upload in progress or no internet
 			if (isUploading || Connectivity.NetworkAccess != NetworkAccess.Internet)
@@ -72,7 +72,7 @@ namespace TicTacToe
 			}
 		}
 
-		public async Task<int> DownloadGameCountAsync(string board)
+		private async Task<int> DownloadGameCountAsync(string board)
 		{
 			// we are done if there is a download in progress or no internet
 			if (isDownloading || Connectivity.NetworkAccess != NetworkAccess.Internet)
